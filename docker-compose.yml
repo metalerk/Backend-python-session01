@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+
+  pythonsql:
+    image: mariadb:10.3
+    restart: always
+    networks:
+      - db_network
+    environment:
+      MYSQL_DATABASE: Biblioteca
+      MYSQL_USER: Biblioteca
+      MYSQL_PASSWORD: Biblioteca
+      MYSQL_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root01
+    ports:
+      - 3306:3306
+
+    volumes:
+      - ./sql:/opt
+
+networks:
+  db_network:
+    external: true
+  
